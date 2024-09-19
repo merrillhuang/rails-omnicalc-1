@@ -9,4 +9,10 @@ class CalcController < ApplicationController
 
     render({ template: "calc_templates/square_result"})
   end
+
+  def new_square_root
+  end
+
+  def square_root_results
+  end
 end
