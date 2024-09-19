@@ -37,4 +37,16 @@ class CalcController < ApplicationController
 
     render({ template: "calc_templates/payment_result"})
   end
+
+  def new_random
+    render({ template: "calc_templates/random"})
+  end
+
+  def random_results
+    @min = params.fetch("min").to_f
+    @max = params.fetch("max").to_f
+    @result = rand(@min..@max)
+
+    render( {template: "calc_templates/random_result"})
+  end
 end
