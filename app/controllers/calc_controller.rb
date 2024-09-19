@@ -20,4 +20,21 @@ class CalcController < ApplicationController
 
     render({ template: "calc_templates/square_root_result"})
   end
+
+  def new_payment
+    render({ template: "calc_templates/payment"})
+  end
+
+  def payment_results
+    apr = params.fetch("apr").to_f
+    @apr = apr.to_fs(:percentage, {:precision => 4})
+    @years = params.fetch("years").to_i
+    princ = params.fetch("princ").to_f
+    @princ = princ.to_fs(:currency)
+    apr_percent = apr/100/12
+    months = @years * 12
+    @payment = ((apr_percent * princ) / (1 - (1+apr_percent)** (-1 * months))).to_fs(:currency)
+
+    render({ template: "calc_templates/payment_result"})
+  end
 end
