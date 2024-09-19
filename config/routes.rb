@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get("/", { controller: "calc", action: "home"})
+  get("/", { controller: "calc", action: "square"})
 end
